@@ -5,4 +5,4 @@ David Caycedo
 Juan Ospina
 
 lab05
-https://github.com/QSARJP/lab05-arsw.git
+https://github.com/QSARJP/lab06-arsw.git

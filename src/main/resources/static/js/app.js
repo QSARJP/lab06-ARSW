@@ -2,6 +2,9 @@ var api = apiclient;
 var Run = (function() {
   var nameAuthor;
   var listBlue = [];
+  var canvas;
+  var context;
+  var bolean;
 
   var cambiarNombre = function(author) {
     nameAuthor = author;
@@ -11,6 +14,8 @@ var Run = (function() {
     cambiarNombre(author);
     $("#authorname").text(author);
     api.getBlueprintsByAuthor(author, generatetable);
+    canvas = document.getElementById("myCanvas");
+    context = canvas.getContext("2d");
   };
 
   var pintarBlue = function(author, name) {
@@ -48,27 +53,52 @@ var Run = (function() {
 
   var generateCanvas = function(blueprint) {
     $("#currentBlueprint").text(blueprint.name);
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.clearRect(0, 0, c.width, c.height);
-    ctx.beginPath();
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
     var anterior;
     blueprint.points.map(function(point) {
       if (!anterior) {
         anterior = point;
-        ctx.moveTo(anterior.x, anterior.y);
+        context.moveTo(anterior.x, anterior.y);
       } else {
-        ctx.lineTo(point.x, point.y);
-        ctx.stroke();
+        context.lineTo(point.x, point.y);
+        context.stroke();
       }
     });
   };
-  
+  var init = function(){
+    
+
+      
+    console.info('initialized');
+    
+    //if PointerEvent is suppported by the browser:
+    if(window.PointerEvent) {
+      canvas.addEventListener("pointerdown", function(event){
+        alert('pointerdown at '+event.pageX+','+event.pageY);  
+        
+      });
+    }
+    else {
+      canvas.addEventListener("mousedown", function(event){
+                  alert('mousedown at '+event.clientX+','+event.clientY);  
+
+        }
+      );
+    }
+  };    
+
+  var validacion = function(){
+
+  }
+
+
 
   
 
   return {
     actualizar: actualizar,
-    pintarBlue: pintarBlue
+    pintarBlue: pintarBlue,
+    init: init
   };
 })();

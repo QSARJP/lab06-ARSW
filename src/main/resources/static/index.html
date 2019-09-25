@@ -60,12 +60,16 @@
               <tbody id="tablas">
               </tbody>
           </table>
-        </div>
-      <div style="float: left">
-          <h2>current Blueprint<i id="currentBlueprint"></i></h2>
-          <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
           <h2>total points : <i id="sumatotal"></i> </h2>
         </div>
+      <div style="float: left">
+        <button id="buttonNewBlue" type="button" class="btn btn-primary" onclick="Run.init()">Create a new blueprint </button>
+          <h2>current Blueprint<i id="currentBlueprint"></i></h2>
+          <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas>
+          <br></br>
+          <button id="buttonSaveUpdate" type="button" class="btn btn-primary" >Save/Update </button>
+          <button id="buttonDelete" type="button" class="btn btn-primary" >Delete </button>
+      </div>
     </div>
   </body>
 </html>
