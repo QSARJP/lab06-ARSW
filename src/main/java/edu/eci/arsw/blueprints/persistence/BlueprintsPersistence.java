@@ -30,6 +30,8 @@ public interface BlueprintsPersistence {
      * @throws 
      */
     public void modifyOrAddBlueprintS(Blueprint bp, String author, String name) throws BlueprintPersistenceException;
+
+    public void removeBlueprint(String author, String name) throws BlueprintPersistenceException;
     
     /**
      * 

@@ -47,6 +47,10 @@ public class BlueprintsServices {
     public void modifyOrAddBlueprint(Blueprint bp, String author, String name) throws BlueprintPersistenceException{
         bpp.modifyOrAddBlueprintS(bp, author, name);
     }
+
+    public void removeBlueprint( String author, String name) throws BlueprintPersistenceException{
+        bpp.removeBlueprint(author, name);
+    }
     /**
      * Metodo encargado de traer todos los BluePrints
      * @return Blueprint
