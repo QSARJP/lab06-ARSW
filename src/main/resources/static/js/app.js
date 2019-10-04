@@ -43,26 +43,12 @@ var Run = (function() {
     return c;
   };
 
-  var getOffset = function(obj) {
-    var offsetLeft = 0;
-    var offsetTop = 0;
-    do {
-      if (!isNaN(obj.offsetLeft)) {
-        offsetLeft += obj.offsetLeft;
-      }
-      if (!isNaN(obj.offsetTop)) {
-        offsetTop += obj.offsetTop;
-      }
-    } while ((obj = obj.offsetParent));
-    return { left: offsetLeft, top: offsetTop };
-  };
 
   var reDibujar = function(event, canvas) {
-    var offset = getOffset(canvas);
-    var x = event.pageX - parseInt(offset.left, 10);
-    var y = event.pageY - parseInt(offset.top, 10);
+    var x = event.pageX ;
+    var y = event.pageY ;
     var blueprint = listBlue.filter(obj => {
-      return obj.name === _name;
+      return obj.name === nombre;
     })[0];
     blueprint.points.push({ x: x, y: y });
     console.log(blueprint);
@@ -77,7 +63,7 @@ var Run = (function() {
   };
 
   var listenMouse = function() {
-    var canvas = _getCanvas();
+    var canvas = getCanvas();
     var contx = canvas.getContext("2d");
     if (window.PointerEvent) {
       canvas.addEventListener("pointerdown", function(event) {
@@ -122,6 +108,7 @@ var Run = (function() {
 
   var planoNuevo = function(name) {
     $("#nameBlueprint").val("");
+    boolean = true;
     var blueprint = {
       author: nameAuthor,
       points: [],

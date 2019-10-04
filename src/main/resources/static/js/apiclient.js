@@ -4,7 +4,7 @@ apiclient = (function () {
     return {
         getBlueprintsByAuthor: function(name, callback) {
           var promise = jQuery.ajax({
-            url: apiUrl + name,
+            url: Url + name,
             success: function(result) {
               callback(result);
             },
@@ -21,7 +21,7 @@ apiclient = (function () {
         },
         getBlueprintsByNameAndAuthor: function(author, name, callback) {
           var promise = jQuery.ajax({
-            url: apiUrl + author + "/" + name,
+            url: Url + author + "/" + name,
             success: function(result) {
               callback(result);
             },
@@ -40,7 +40,7 @@ apiclient = (function () {
         },
         setBlueprint: function(author, name, blueprint) {
           var promise = $.ajax({
-            url: "/blueprints/" + author + "/" + name + "/",
+            url: Url + author + "/" + name + "/",
             type: "PUT",
             data: blueprint,
             contentType: "application/json"
